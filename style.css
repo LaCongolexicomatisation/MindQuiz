@@ -1,0 +1,84 @@
+body{
+    display: block;
+    width:99%;
+    height: auto;
+    margin:0 auto;
+}
+
+/******* Page choixTheme.php ********/
+
+main#mainChoixTheme{
+    display: block;
+    width:50%;
+    margin:auto;
+    text-align: center;
+}
+
+fieldset#fieldsetChoix{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    border-radius: 50px;
+}
+
+fieldset#fieldsetChoix legend{
+    margin-left:50px;
+}
+
+/******** Page game.php *********/
+
+p#time{
+    text-align: center;
+}
+
+main#mainGame{
+    display: inline-block;
+    width:100%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+#draggable1 { width: 400px; height: 50px; padding: 0.5em; }
+#draggable2 { width: 400px; height: 50px; padding: 0.5em; }
+#draggable3 { width: 400px; height: 50px; padding: 0.5em; }
+#draggable4{ width: 400px; height: 50px; padding: 0.5em; }
+#draggable5 { width: 400px; height: 50px; padding: 0.5em; }
+
+section#reponses{
+    float: left;
+    width:35%;
+    height: 500px;
+    margin: auto;
+}
+
+section#question{
+    overflow: hidden;
+    width:60%;
+    height: auto;
+    border: solid;
+    margin: auto;
+}
+table#correction{
+    margin: auto;
+    text-align: center;
+    border:grey 5px solid;
+}
+
+td.helper{
+    width:15px;
+    height: 15px;
+    border:grey 2px solid;
+}
+
+table#emplacement{
+    margin: auto;
+    text-align: center;
+    border: slategrey 2px solid;
+}
+
+td.eptRep{
+    width:400px;
+    height:50px;
+    padding:20px;
+    border:solid;
+}
