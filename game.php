@@ -7,6 +7,8 @@
         $("#draggable4").draggable();
         $("#draggable5").draggable();
     });
+
+
 </script>
 <?php
 
@@ -28,67 +30,62 @@ if (isset($_POST['go'])) {
         default:
             echo 'Pas de theme';
     }
-    print('
+//    class="ui-widget-content"
+    ?>
     <main role="main" id="mainGame">
-    <section id="reponses">
 
-        <div id="draggable1" class="ui-widget-content">
-            <p>Réponse 1</p>
-        </div>
-        <br/>
+        <section id="reponses">
 
-        <div id="draggable2" class="ui-widget-content">
-            <p>Réponse 2</p>
-        </div>
+            <div class="dropper">
+                <div id="draggable1" class="draggable">
+                    <p>Réponse 1</p>
+                </div>
 
-        <br/>
+                <br/>
 
-        <div id="draggable3" class="ui-widget-content">
-            <p>Réponse 3</p>
-        </div>
+                <div id="draggable2" class="draggable">
+                    <p>Réponse 2</p>
+                </div>
 
-        <br/>
+                <br/>
 
-        <div id="draggable4" class="ui-widget-content">
-            <p>Réponse 4</p>
-        </div>
+                <div id="draggable3" class="draggable">
+                    <p>Réponse 3</p>
+                </div>
 
-        <br/>
+                <br/>
 
-        <div id="draggable5" class="ui-widget-content">
-            <p>Réponse piège</p>
-        </div>
-    </section>
+                <div id="draggable4" class="draggable">
+                    <p>Réponse 4</p>
+                </div>
 
-    <section id="question">
-        <h2>Question : </h2>
-        <hr/>
-        <table id="correction">
-            <td class="helper"></td>
-            <td class="helper"></td>
-            <td class="helper"></td>
-            <td class="helper"></td>
-        </table>
-        <hr/>
-        <table id="emplacement">
-            <tr>
-            <td class="eptRep"></td>
-            </tr><tr>
-            <td class="eptRep"></td>
-            </tr><tr>
-            <td class="eptRep"></td>
-            </tr><tr>
-            <td class="eptRep"></td>
-            </tr>
-        </table>
-        <input type="submit" value="valider" name="valider" />
-    </section>
+                <br/>
 
-    </mai>
+                <div id="draggable5" class="draggable">
+                    <p>Réponse piège</p>
+                </div>
+            </div>
+        </section>
 
-</main>
-    ');
+        <section id="question">
+            <h2>Question : </h2>
+            <hr/>
+            <table id="correction">
+                <td class="helper"></td>
+                <td class="helper"></td>
+                <td class="helper"></td>
+                <td class="helper"></td>
+            </table>
+            <hr/>
+            <div id="emplacement" class="dropper">
+<!--                <div class="draggable">dd</div>-->
+            </div>
 
+            <input type="submit" value="valider" name="valider"/>
+        </section>
+
+    </main>
+    <?php
 } else {
     echo 'erreur';
 }

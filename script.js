@@ -1,30 +1,3 @@
-var centi=0 // initialise les dixtièmes
-var secon=0 //initialise les secondes
-var minu=0 //initialise les minutes
-
-function chrono(){
-    centi++; //incrémentation des dixièmes de 1
-    if (centi>9){centi=0;secon++} //si les dixièmes > 9,
-   // on les réinitialise à 0 et on incrémente les secondes de 1
-    if (secon>59){secon=0;minu++} //si les secondes > 59,
-  //  on les réinitialise à 0 et on incrémente les minutes de 1
-    document.forsec.secc.value=" "+centi //on affiche les dixièmes
-    document.forsec.seca.value=" "+secon //on affiche les secondes
-    document.forsec.secb.value=" "+minu //on affiche les minutes
-    compte=setTimeout('chrono()',100) //la fonction est relancée
-   // tous les 10° de secondes
-}
-
-function rasee(){ //fonction qui remet les compteurs à 0
-    clearTimeout(compte) //arrête la fonction chrono()
-    centi=0;
-    secon=0;
-    minu=0;
-    document.forsec.secc.value=" "+centi
-    document.forsec.seca.value=" "+secon
-    document.forsec.secb.value=" "+minu
-}
-
 var time = "0:0:0";
 function changeTime() {
     var timeSplited = time.split(':');
@@ -50,3 +23,76 @@ function changeTime() {
     document.getElementById('time').innerHTML = time;
 }
 var instance = self.setInterval(changeTime ,1000);
+
+/*****************************/
+
+(function() {
+
+    var dndHandler = {
+
+        draggedElement: null, // Propriété pointant vers l'élément en cours de déplacement
+
+        applyDragEvents: function(element) {
+
+            element.draggable = true;
+
+            var dndHandler = this; // Cette variable est nécessaire pour que l'événement "dragstart" ci-dessous accède facilement au namespace "dndHandler"
+
+            element.addEventListener('dragstart', function(e) {
+                dndHandler.draggedElement = e.target; // On sauvegarde l'élément en cours de déplacement
+                e.dataTransfer.setData('text/plain', ''); // Nécessaire pour Firefox
+            }, false);
+
+        },
+
+        applyDropEvents: function(dropper) {
+
+            dropper.addEventListener('dragover', function(e) {
+                e.preventDefault(); // On autorise le drop d'éléments
+                this.className = 'dropper drop_hover'; // Et on applique le design adéquat à notre zone de drop quand un élément la survole
+            }, false);
+
+            dropper.addEventListener('dragleave', function() {
+                this.className = 'dropper'; // On revient au design de base lorsque l'élément quitte la zone de drop
+            });
+
+            var dndHandler = this; // Cette variable est nécessaire pour que l'événement "drop" ci-dessous accède facilement au namespace "dndHandler"
+
+            dropper.addEventListener('drop', function(e) {
+
+                var target = e.target,
+                    draggedElement = dndHandler.draggedElement, // Récupération de l'élément concerné
+                    clonedElement = draggedElement.cloneNode(true); // On créé immédiatement le clone de cet élément
+
+                while(target.className.indexOf('dropper') == -1) { // Cette boucle permet de remonter jusqu'à la zone de drop parente
+                    target = target.parentNode;
+                }
+
+                target.className = 'dropper'; // Application du design par défaut
+
+                clonedElement = target.appendChild(clonedElement); // Ajout de l'élément cloné à la zone de drop actuelle
+                dndHandler.applyDragEvents(clonedElement); // Nouvelle application des événements qui ont été perdus lors du cloneNode()
+
+                draggedElement.parentNode.removeChild(draggedElement); // Suppression de l'élément d'origine
+
+            });
+
+        }
+
+    };
+
+    var elements = document.querySelectorAll('.draggable'),
+        elementsLen = elements.length;
+
+    for(var i = 0 ; i < elementsLen ; i++) {
+        dndHandler.applyDragEvents(elements[i]); // Application des paramètres nécessaires aux élément déplaçables
+    }
+
+    var droppers = document.querySelectorAll('.dropper'),
+        droppersLen = droppers.length;
+
+    for(var i = 0 ; i < droppersLen ; i++) {
+        dndHandler.applyDropEvents(droppers[i]); // Application des événements nécessaires aux zones de drop
+    }
+
+})();

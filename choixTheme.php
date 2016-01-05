@@ -1,7 +1,7 @@
 <main id="mainChoixTheme" role="main">
     <form action="game.php" method="post">
         <fieldset id="fieldsetChoix">
-            <legend>Choix du thème</legend>
+            <h3>Choix du thème</h3>
             <label for="pseudo">Pseudo :</label><br />
             <input id="pseudo" type="text" name="pseudo" size="42" placeholder="entrer votre pseudo" maxlength="42" required/>
 

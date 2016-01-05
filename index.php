@@ -7,4 +7,3 @@ require_once 'choixTheme.php';
  * Date: 03/01/2016
  * Time: 13:56
  */
-
